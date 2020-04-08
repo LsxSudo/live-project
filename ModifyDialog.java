@@ -2,6 +2,9 @@ package UserManageSystem;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -12,24 +15,24 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 //修改离校时间
 public class ModifyDialog extends  JDialog implements ActionListener {
-    /***********************定义控件**************************/
-    private JLabel lbMsg=new JLabel("姓名");
+    /*******************************定义各控件**************************/
+    private JLabel lbMsg=new JLabel("姓名为：");
     private JLabel lbAccount=new JLabel(Conf.account);
-    private JLabel lbPassword=new JLabel("输入学号");
-    private JTextField pfPassword=new JTextField(Conf.password,10);
-    private JLabel lbPassword2=new JLabel("输入确认学号");
+    private JLabel lbPassword=new JLabel("修改学号");
+    private JTextField pfPassword=new JTextField(Conf.password,20);
+    private JLabel lbPassword2=new JLabel("修改确认学号");
     private JTextField pfPassword2=new JTextField(Conf.password,10);
     private JLabel lbTime=new JLabel("修改入校时间");
     private JTextField tfTime=new JTextField(Conf.time,10);
     private JLabel lbLeave=new JLabel("修改离校时间");
     private JTextField tfLeave=new JTextField(Conf.leave,10);
-    private JButton btModify=new JButton("记录");
+    private JButton btModify=new JButton("修改");
     private JButton btTime=new JButton("记录离校");
-    private JButton btExit=new JButton("关闭’");
+    private JButton btExit=new JButton("关闭");
     public ModifyDialog(JFrame frm) {
-        /**********************界面初始化***************************/
+        /***********************界面初始化***************************/
         super(frm,true);
-        this.setLayout(new GridLayout(6,2));
+        this.setLayout(new GridLayout(7,2));
         this.add(lbMsg);
         this.add(lbAccount);
         this.add(lbPassword);
@@ -41,15 +44,15 @@ public class ModifyDialog extends  JDialog implements ActionListener {
         this.add(lbLeave);
         this.add(tfLeave);
         this.add(btModify);
-        this.add(btExit);
         this.add(btTime);
+        this.add(btExit);
         this.setSize(300,200);
         GUIUtil.toCenter(this);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        /*******************增加监听*****************************/
-         btModify.addActionListener(this);
+        /*******************增加监听*******************************/
+        btModify.addActionListener(this);
         btExit.addActionListener(this);
-        //btTime.addActionListener(this);
+        btTime.addActionListener(this);
         this.setResizable(false);
         this.setVisible(true);
     }
