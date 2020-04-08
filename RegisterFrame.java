@@ -13,28 +13,28 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 
-//µÇ¼Ç½çÃæ
+//ç™»è®°ç•Œé¢
 public class RegisterFrame extends JFrame implements ActionListener {
-    /**********************¶¨Òå¸÷¿Ø¼ş********************************/
-    private JLabel lbAccount=new JLabel("ÊäÈëĞÕÃû");
+    /**********************å®šä¹‰å„æ§ä»¶********************************/
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//è®¾ç½®æ—¥æœŸæ ¼å¼
+    private JLabel lbAccount=new JLabel("è¾“å…¥å§“å");
     private JTextField tfAccount=new JTextField(15);
-    private JLabel lbPassword=new JLabel("ÊäÈëÑ§ºÅ");
+    private JLabel lbPassword=new JLabel("è¾“å…¥å­¦å·");
     private JTextField pfPassword=new JTextField(15);
-    private JLabel lbPassword2=new JLabel("ÊäÈëÈ·ÈÏÑ§ºÅ");
-    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//ÉèÖÃÈÕÆÚ¸ñÊ½
+    private JLabel lbPassword2=new JLabel("è¾“å…¥ç¡®è®¤å­¦å·");
     private JTextField pfPassword2=new JTextField(12);
-    private JLabel lbName=new JLabel("ÊäÈëÈëĞ£Ê±¼ä");
+    private JLabel lbName=new JLabel("è¾“å…¥å…¥æ ¡æ—¶é—´");
     private JTextField tfName=new JTextField(12);
-    private JLabel lbDept=new JLabel("ÊäÈëÀëĞ£Ê±¼ä");
+    private JLabel lbDept=new JLabel("è¾“å…¥ç¦»æ ¡æ—¶é—´");
     private JTextField tfDept=new JTextField(12);
     
     
-    private JButton btRegister=new JButton("µÇ¼Ç");
-    private JButton btLogin=new JButton("²éÑ¯");
-    private JButton btExit=new JButton("ÍË³ö");
+    private JButton btRegister=new JButton("ç™»è®°");
+    private JButton btLogin=new JButton("æŸ¥è¯¢");
+    private JButton btExit=new JButton("é€€å‡º");
     public RegisterFrame() {
-        /******************½çÃæ³õÊ¼»¯********************/
-        super("×¢²á");
+        /******************ç•Œé¢åˆå§‹åŒ–********************/
+        super("æ³¨å†Œ");
         this.setLayout(new FlowLayout());
         this.add(lbAccount);
         this.add(tfAccount);
@@ -54,7 +54,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);
-        /****************************Ôö¼Ó¼àÌı***********************/
+        /****************************å¢åŠ ç›‘å¬***********************/
         btLogin.addActionListener(this);
         btRegister.addActionListener(this);
         btExit.addActionListener(this);
@@ -65,26 +65,26 @@ public class RegisterFrame extends JFrame implements ActionListener {
             String password1=pfPassword.getText();
             String password2=pfPassword2.getText();
             if(!password1.equals(password2)) {
-                JOptionPane.showMessageDialog(this,"Á½¸öÑ§ºÅ²»ÏàÍ¬");
+                JOptionPane.showMessageDialog(this,"ä¸¤ä¸ªå­¦å·ä¸ç›¸åŒ");
                 return;
             }
             String account=tfAccount.getText();
             FileOpe.getInfoByAccount(account);
             if(Conf.account!=null) {
-                JOptionPane.showMessageDialog(this,"ÓÃ»§ÒÑ¾­µÇ¼Ç");
+                JOptionPane.showMessageDialog(this,"ç”¨æˆ·å·²ç»ç™»è®°");
                 return;
             }
-            String name=df.format(new Date());
+            String name=tfName.getText();
             String dept=df.format(new Date());
             FileOpe.updateCustomer(account,password1,name,dept);
-            JOptionPane.showMessageDialog(this,"µÇ¼Ç³É¹¦");
+            JOptionPane.showMessageDialog(this,"ç™»è®°æˆåŠŸ");
         }
         else if(e.getSource()==btLogin) {
             this.dispose();
             new LoginFrame();
         }
         else {
-            JOptionPane.showMessageDialog(this,"Ğ»Ğ»¹âÁÙ");
+            JOptionPane.showMessageDialog(this,"å†è§");
             System.exit(0);
         }
     }
